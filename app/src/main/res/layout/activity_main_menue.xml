@@ -20,6 +20,19 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main_menue"
-        app:menu="@menu/activity_main_menue_drawer" />
+        app:menu="@menu/activity_main_menue_drawer" >
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4" />
+
+        <RadioButton
+            android:text="RadioButton"
+            android:layout_width="304dp"
+            android:layout_height="210dp"
+            android:id="@+id/radioButton" />
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

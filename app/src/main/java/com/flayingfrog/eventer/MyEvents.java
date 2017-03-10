@@ -24,5 +24,11 @@ public class MyEvents extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        //t sb
+        //for all the events
+        //create imageview
+        //create info
+        //create button
     }
 }

@@ -20,11 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Test1" />
+        <!--activity android:name=".Test1" /-->
         <activity
             android:name=".MyEvents"
             android:label="@string/title_activity_my_events"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
-</manifest>
+    </manifest>

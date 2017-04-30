@@ -11,19 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.R;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 
 public class Test1 extends AppCompatActivity {
     private GestureDetector gestureDetector;
@@ -48,22 +36,17 @@ public class Test1 extends AppCompatActivity {
             "Knuckle Puck in Paris",
     };
 
-    LoginButton loginButton;
-    TextView textView5;
-    CallbackManager callbackManager;
-
 
 
     @Override // This works as the "main" of the project, thus all the functions will occur at the begining.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.test1);
 
 
         picture = (ImageView) findViewById(R.id.imagen);
 
-        desc = (EditText) findViewById(R.id.info);
+        desc = (EditText) findViewById(R.id.time);
 
         Drawable d = getResources().getDrawable(pictures[index]);
 
@@ -74,41 +57,13 @@ public class Test1 extends AppCompatActivity {
 
         gestureDetector = new GestureDetector(new Test1.SwipeGestureDetector());
 
-        loginButton = (LoginButton)findViewById(R.id.login_button);
-        textView5 = (TextView)findViewById(R.id.textView);
-        callbackManager = CallbackManager.Factory.create();
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                textView5.setText("Login Sucess \n" +
-                loginResult.getAccessToken().getUserId() +
-                "\n" + loginResult.getAccessToken().getToken());
-
-            }
-
-            @Override
-            public void onCancel() {
-                textView5.setText("Login Cancelled");
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-
-            }
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode,resultCode,data);
     }
 
     public void ticClicked(View view){
 
         picture = (ImageView) findViewById(R.id.imagen);
 
-        desc = (EditText) findViewById(R.id.info);
+        desc = (EditText) findViewById(R.id.time);
 
         Drawable d = getResources().getDrawable(pictures[index]);
 
@@ -131,7 +86,7 @@ public class Test1 extends AppCompatActivity {
 
         picture = (ImageView) findViewById(R.id.imagen);
 
-        desc = (EditText) findViewById(R.id.info);
+        desc = (EditText) findViewById(R.id.time);
 
         Drawable d = getResources().getDrawable(pictures[index]);
 

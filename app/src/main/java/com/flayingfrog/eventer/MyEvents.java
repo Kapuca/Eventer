@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -53,32 +54,23 @@ public class MyEvents extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_my_events);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         listView=(ListView)findViewById(R.id.list);
 
         Events= new ArrayList<>();
 
-        Events.add(new Event("The Wonder Years in Paris", "The wonder years concert", "The Wonder Years are going to a concert in France, don't miss it out!","September 23, 2008",getResources().getDrawable(R.drawable.twy)));
-        Events.add(new Event("Tiny Moving Parts in Kamnik", "Tiny moving parts concert", "Tiny Moving Parts are going to a concert in France, don't miss it out!","September 23, 2008",getResources().getDrawable(R.drawable.tmp)));
-        Events.add(new Event("Knuckle Puck in Madrid", "Knuckle Puck concert", "The Wonder Years are going to a concert in France, don't miss it out!","September 23, 2008",getResources().getDrawable(R.drawable.kp)));
+        Events.add(new Event("The Wonder Years in Paris", "The wonder years concert","September 23, 2008","10:45",getResources().getDrawable(R.drawable.twy)));
+        Events.add(new Event("Tiny Moving Parts in Kamnik", "Tiny moving parts concert","September 23, 2008","8:45",getResources().getDrawable(R.drawable.tmp)));
+        Events.add(new Event("Knuckle Puck in Madrid", "Knuckle Puck concert","September 23, 2008","7:00",getResources().getDrawable(R.drawable.kp)));
 
         adapter= new customView(Events,getApplicationContext());
 
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Event Event= Events.get(position);
-
-                Snackbar.make(view, Event.theInfo(),Snackbar.LENGTH_LONG)
-                        .setAction("No action", null).show();
-            }
-        });
 
         gestureDetector = new GestureDetector(new MyEvents.SwipeGestureDetector());
+
     }
 
     @Override
@@ -153,5 +145,7 @@ public class MyEvents extends AppCompatActivity {
             return false;
         }
     }
+
+
 }
 

@@ -7,23 +7,22 @@ import android.graphics.drawable.Drawable;
  */
 
 public class Event {
-    String info;
     String name;
     String description; //small description of the event
     String date; //day and time? of the event
+    String time;
     Drawable image; //image of the event
 
-    public Event(String info,String name,String description,String date,Drawable image) {
-        this.info = info;
+    public Event(String name,String description,String date,String time,Drawable image) {
         this.name = name;
         this.description = description;
         this.date = date;
+        this.time=time;
         this.image = image;
     }
 
-    public String theInfo(){
-        return this.info;
-    }
+
+    public String theTime() {return this.time;}
 
     public String theName(){
         return this.name;
@@ -40,6 +39,8 @@ public class Event {
     public Drawable theImage(){
         return this.image;
     }
+
+
 
 
 

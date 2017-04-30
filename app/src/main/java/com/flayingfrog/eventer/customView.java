@@ -11,9 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.flayingfrog.eventer.Event;
-import com.flayingfrog.eventer.R;
-
 import java.util.ArrayList;
 
 /**
@@ -27,11 +24,12 @@ public class customView extends ArrayAdapter<Event> implements View.OnClickListe
 
     // View lookup cache
     private static class ViewHolder {
-        TextView info;
         TextView name;
-        TextView description;
         TextView date;
+        TextView time;
         ImageView image;
+        ImageView borrar;
+
     }
 
     public customView(ArrayList<Event> data, Context context) {
@@ -53,8 +51,13 @@ public class customView extends ArrayAdapter<Event> implements View.OnClickListe
         switch (v.getId())
         {
             case R.id.image:
-                Snackbar.make(v,event.theInfo(), Snackbar.LENGTH_LONG)
+                Snackbar.make(v,event.theDesc(), Snackbar.LENGTH_LONG)
                         .setAction("No action", null).show();
+                break;
+
+            case R.id.borrar:
+                data.remove(position);
+                //SunetePreferateAdaptor.this.notifyDataSetChanged();
                 break;
         }
     }
@@ -76,10 +79,10 @@ public class customView extends ArrayAdapter<Event> implements View.OnClickListe
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.rowitem, parent, false);
             viewHolder.name = (TextView) convertView.findViewById(R.id.name);
-            viewHolder.info = (TextView) convertView.findViewById(R.id.info);
-            //viewHolder.description = (TextView) convertView.findViewById(R.id.version_number);
+            viewHolder.time = (TextView) convertView.findViewById(R.id.time);
             viewHolder.date = (TextView) convertView.findViewById(R.id.date);
             viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
+            viewHolder.borrar = (ImageView) convertView.findViewById(R.id.borrar);
 
             result=convertView;
 
@@ -94,11 +97,12 @@ public class customView extends ArrayAdapter<Event> implements View.OnClickListe
         lastPosition = position;
 
         viewHolder.name.setText(dataModel.theName());
-        //viewHolder.description.setText(dataModel.theDesc());
+        viewHolder.time.setText(dataModel.theTime());
         viewHolder.date.setText(dataModel.theDate());
         viewHolder.image.setOnClickListener(this);
         viewHolder.image.setTag(position);
-        // Return the completed view to render on screen
+        viewHolder.borrar.setOnClickListener(this);
+        viewHolder.borrar.setTag(position);
         return convertView;
     }
 }

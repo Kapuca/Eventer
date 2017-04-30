@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.flayingfrog.eventer.MyEvents"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_my_events">
+    >
 
     <ListView
         android:id="@+id/list"
